@@ -9,11 +9,12 @@ export const ContextParent = () => {
 
   console.log("ContextParent Render");
   return (
-    <>
+    <div>
+      <h2>React context</h2>
       <button onClick={() => setCount(count + 1)}>Count: {count}</button>
       <CountProvider value={count}>
         <MemoizedChildA />
       </CountProvider>
-    </>
+    </div>
   );
 };

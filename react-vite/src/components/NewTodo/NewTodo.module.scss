@@ -1,0 +1,13 @@
+input[type="text"] {
+  width: 50vw;
+  height: 10px;
+  border-radius: 0.3em;
+  padding: 0.7em;
+  font-size: 1.5em;
+  outline: none;
+  caret-color: #eeeeee;
+
+  &:focus {
+    filter: drop-shadow(0 0 0.4rem rgb(179, 179, 179));
+  }
+}
