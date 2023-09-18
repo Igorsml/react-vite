@@ -19,6 +19,8 @@ const counter = (state = 0, action) => {
 
 export const store = createStore(counter);
 
+
+
 // actions
 export const increment = { type: "INCREMENT" };
 export const decrement = { type: "DECREMENT" };

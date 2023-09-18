@@ -27,7 +27,6 @@ const todos = (state = [], action) => {
 };
 
 export const storeTodo = createStore(todos);
-console.log("storeTodo:", storeTodo);
 
 // action creators
 export const addTodo = (title) => ({

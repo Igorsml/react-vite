@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, reset } from "./store/store";
+import { Provider } from "react-redux";
+import { storeTodo } from "./store/storeTodo";
 import { ContextParent } from "./components/ContextParent/ContextParent";
 import { CounterUseState } from "./components/CounterUseState/CounterUseState";
 import { NewTodo } from "./components/NewTodo/NewTodo";
@@ -15,8 +17,10 @@ function App() {
       <Counter />
       <CounterUseState />
       <CounterUseState />
-      <NewTodo />
-      <TodoList />
+      <Provider store={storeTodo}>
+        <NewTodo />
+        <TodoList />
+      </Provider>
     </div>
   );
 }

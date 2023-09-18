@@ -2,14 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
-import { storeTodo } from "./store/storeTodo";
 import App from "./App.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <Provider store={storeTodo}>
-      <App />
-    </Provider>
+    <App />
   </Provider>
 );
+
+console.log("getState:", store.getState());
