@@ -7,17 +7,19 @@ const todos = (state = [], action) => {
         ...state,
         {
           id: Date.now(),
-          title: action.title,
+          title: action.payload,
           completed: false,
         },
       ];
     }
     case "REMOVE_TODO": {
-      return state.filter((todo) => todo.id !== action.id);
+      return state.filter((todo) => todo.id !== action.payload.id);
     }
     case "TOGGLE_TODO": {
       return state.map((todo) =>
-        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
+        todo.id === action.payload.id
+          ? { ...todo, completed: !todo.completed }
+          : todo
       );
     }
     default: {
@@ -31,19 +33,13 @@ export const storeTodo = createStore(todos);
 // action creators
 export const addTodo = (title) => ({
   type: "ADD_TODO",
-  payload: {
-    title,
-  },
+  payload: title,
 });
 export const removeTodo = (id) => ({
   type: "REMOVE_TODO",
-  payload: {
-    id,
-  },
+  payload: id,
 });
 export const toggleTodo = (id) => ({
   type: "TOGGLE_TODO",
-  payload: {
-    id,
-  },
+  payload: id,
 });
