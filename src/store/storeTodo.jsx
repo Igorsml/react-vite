@@ -31,13 +31,19 @@ export const storeTodo = createStore(todos);
 // action creators
 export const addTodo = (title) => ({
   type: "ADD_TODO",
-  title,
+  payload: {
+    title,
+  },
 });
 export const removeTodo = (id) => ({
   type: "REMOVE_TODO",
-  id,
+  payload: {
+    id,
+  },
 });
 export const toggleTodo = (id) => ({
   type: "TOGGLE_TODO",
-  id,
+  payload: {
+    id,
+  },
 });

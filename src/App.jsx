@@ -1,3 +1,4 @@
+import React, { isValidElement } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, reset } from "./store/store";
 import { Provider } from "react-redux";
@@ -6,6 +7,7 @@ import { ContextParent } from "./components/ContextParent/ContextParent";
 import { CounterUseState } from "./components/CounterUseState/CounterUseState";
 import { NewTodo } from "./components/NewTodo/NewTodo";
 import { TodoList } from "./components/TodoList/TodoList";
+import { MyElement } from "./components/CreateElement/CreateElement";
 
 import "./App.css";
 
@@ -21,9 +23,14 @@ function App() {
         <NewTodo />
         <TodoList />
       </Provider>
+      {/* <MyElement /> */}
     </div>
   );
 }
+
+console.log("isValidElement:", isValidElement(<MyElement />)); // true
+console.log("typeof:", typeof (<MyElement />)); // object
+console.log("CreateElement:", <MyElement />); //
 
 const Counter = () => {
   const count = useSelector((state) => state);
