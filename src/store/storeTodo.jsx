@@ -13,11 +13,11 @@ const todos = (state = [], action) => {
       ];
     }
     case "REMOVE_TODO": {
-      return state.filter((todo) => todo.id !== action.payload.id);
+      return state.filter((todo) => todo.id !== action.payload);
     }
     case "TOGGLE_TODO": {
       return state.map((todo) =>
-        todo.id === action.payload.id
+        todo.id === action.payload
           ? { ...todo, completed: !todo.completed }
           : todo
       );
@@ -41,5 +41,5 @@ export const removeTodo = (id) => ({
 });
 export const toggleTodo = (id) => ({
   type: "TOGGLE_TODO",
-  payload: id,
+  payload: { id },
 });
