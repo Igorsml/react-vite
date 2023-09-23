@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Comment } from "./Comment";
 import { Article } from "./Article";
+import uuid from "react-uuid";
 
 const listThemes = [
-  { title: "createElement" },
-  { title: "isValidElement" },
-  { title: "getSalary" },
+  { id: 1, title: "createElement" },
+  { id: 2, title: "isValidElement" },
+  { id: 3, title: "getSalary" },
 ];
+
+let length = 0;
 
 export const ReactKeys = () => {
   const [comments, setComments] = useState([]);
@@ -25,22 +28,44 @@ export const ReactKeys = () => {
   };
 
   return (
-    <div>
-      <h2>Comments</h2>
+    <div className="main">
       <div>
-        {comments.map((comment, index) => (
-          <Comment key={index} value={comment} />
+        <h2>ID</h2>
+        <div>
+          {comments.map((comment) => (
+            <Comment key={comment.id} value={comment} />
+          ))}
+        </div>
+      </div>
+      <div>
+        <h2>Index</h2>
+        {listThemes.map((theme, index) => (
+          <Article key={index} indexKey={index} theme={theme} />
         ))}
       </div>
-      <h2>Index</h2>
-      {listThemes.map((theme) => (
-        <Article key={theme.id} theme={theme} />
-      ))}
-
-      <h2>Pre + Date + Time</h2>
-      {listThemes.map((theme, index) => (
-        <Article dateKey={generateKey(theme.title)} theme={theme} />
-      ))}
+      <div>
+        <h2>Pre + Date + Time</h2>
+        {listThemes.map((theme) => (
+          <Article
+            key={generateKey(theme.title)}
+            dateKey={generateKey(theme.title)}
+            theme={theme}
+          />
+        ))}
+      </div>
+      <div>
+        <h2>Array length</h2>
+        {listThemes.map((theme) => {
+          length += 1;
+          return <Article key={length} lengthKey={length} theme={theme} />;
+        })}
+      </div>
+      <div>
+        <h2>UUID</h2>
+        {listThemes.map((theme) => (
+          <Article key={uuid()} uuidKey={uuid()} theme={theme} />
+        ))}
+      </div>
     </div>
   );
 };

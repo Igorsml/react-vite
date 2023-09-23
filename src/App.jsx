@@ -15,17 +15,24 @@ import "./App.css";
 function App() {
   return (
     <div className="main">
-      <ContextParent />
-      <Counter />
-      <Counter />
-      <CounterUseState />
-      <CounterUseState />
-      <Provider store={storeTodo}>
-        <NewTodo />
-        <TodoList />
-      </Provider>
       <MyElement />
       <ReactKeys />
+      <details>
+        <summary>Prev Q&A</summary>
+        <div className="content">
+          <div className="main">
+            <ContextParent />
+            <Counter />
+            <Counter />
+            <CounterUseState />
+            <CounterUseState />
+            <Provider store={storeTodo}>
+              <NewTodo />
+              <TodoList />
+            </Provider>
+          </div>
+        </div>
+      </details>
     </div>
   );
 }
