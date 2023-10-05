@@ -7,7 +7,6 @@ const CountProvider = CountContext.Provider;
 export const ContextParent = () => {
   const [count, setCount] = useState(0);
 
-  console.log("ContextParent Render");
   return (
     <div>
       <h2>React context</h2>

@@ -1,4 +1,4 @@
-import React, { isValidElement, createElement } from "react";
+// import React, { isValidElement, createElement } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, reset } from "./store/store";
 import { Provider } from "react-redux";
@@ -8,19 +8,25 @@ import { CounterUseState } from "./components/CounterUseState/CounterUseState";
 import { NewTodo } from "./components/NewTodo/NewTodo";
 import { TodoList } from "./components/TodoList/TodoList";
 import { MyElement } from "./components/CreateElement/CreateElement";
-import { ReactKeys } from "./components/ReactKeys/ReactKeys";
+// import { ReactKeys } from "./components/ReactKeys/ReactKeys";
+import { ShowHide } from "./components/ShowHide/ShowHide";
+import { Users } from "./components/ReactKeys/Users";
+import { DogsOrder } from "./components/DogsOrder/DogsOrder";
 
 import "./App.css";
 
 function App() {
   return (
     <div className="main">
-      <MyElement />
-      <ReactKeys />
+      <ShowHide />
+      <DogsOrder />
       <details>
         <summary>Prev Q&A</summary>
         <div className="content">
           <div className="main">
+            <MyElement />
+            {/* <ReactKeys /> */}
+            <Users />
             <ContextParent />
             <Counter />
             <Counter />
@@ -36,15 +42,6 @@ function App() {
     </div>
   );
 }
-
-console.log("isValidElement:", isValidElement(<MyElement />)); // true
-console.log("typeof:", typeof (<MyElement />)); // object
-console.log("CreateElement:", <MyElement />); //
-console.log(
-  "isValidCreateElement:",
-  isValidElement(createElement("object", { a: "test" }))
-); // true
-console.log("isValideObject:", isValidElement({ a: "test2" })); // false
 
 const Counter = () => {
   const count = useSelector((state) => state);
