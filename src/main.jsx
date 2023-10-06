@@ -9,7 +9,9 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     {/* <MyElement /> */}
-    <App />
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
   </Provider>
 );
 
@@ -18,4 +20,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 (for built-in components) or a class/function (for composite components) but
 got: object. */
 }
-console.log("getState:", store.getState());

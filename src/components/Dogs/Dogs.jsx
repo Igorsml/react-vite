@@ -1,13 +1,5 @@
-import { useEffect } from "react";
-
 export const Dogs = (props) => {
   const { dogsList = [], addToOrder } = props;
-
-  useEffect(() => {
-    if (props.count === 0) {
-      props.setCount(1);
-    }
-  }, [props]);
 
   return (
     <div>
@@ -40,7 +32,7 @@ const Dog = (props) => {
         <div>Age:{age}</div>
         <div>Weight: {weight}</div>
       </div>
-      <button onClick={addToOrder(id)}>Buy</button>
+      <button onClick={() => addToOrder(id)}>Buy</button>
     </div>
   );
 };

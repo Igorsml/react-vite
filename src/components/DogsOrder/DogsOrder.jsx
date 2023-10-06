@@ -3,7 +3,11 @@ import { Dogs } from "../Dogs/Dogs";
 import { dogsList } from "../Dogs/DogsList";
 
 export const DogsOrder = () => {
-  const [order, setOrder] = useLocalStorage([], "order");
+  const key = "orders";
+  const [order, setOrder] = useLocalStorage([], key);
+
+  const value = `, ${order.map((item) => item.name)}`;
+  const handleClear = () => localStorage.clear();
 
   const addToOrder = (id) => {
     const newItem = dogsList.find((item) => item.id === id);
@@ -11,5 +15,12 @@ export const DogsOrder = () => {
     setOrder([...order, newItem]);
   };
 
-  return <Dogs dogsList={dogsList} addToOrder={addToOrder} />;
+  return (
+    <>
+      <h2>useLocalStorage</h2>
+      <div style={{ display: "flex" }}>value from LS: {value}</div>
+      <button onClick={handleClear}>Clear LS</button>
+      <Dogs dogsList={dogsList} addToOrder={addToOrder} />;
+    </>
+  );
 };

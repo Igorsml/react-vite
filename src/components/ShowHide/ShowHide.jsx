@@ -6,6 +6,7 @@ export const ShowHide = () => {
 
   return (
     <div style={{ position: "relative" }}>
+      <h3>useToggle</h3>
       <button style={{ minWidth: "100px" }} onClick={toggleVisible}>
         {isVisible ? "Show" : "Hide"}
       </button>
