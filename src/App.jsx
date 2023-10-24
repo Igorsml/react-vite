@@ -8,26 +8,28 @@ import { CounterUseState } from "./components/CounterUseState/CounterUseState";
 import { NewTodo } from "./components/NewTodo/NewTodo";
 import { TodoList } from "./components/TodoList/TodoList";
 import { MyElement } from "./components/CreateElement/CreateElement";
-// import { ReactKeys } from "./components/ReactKeys/ReactKeys";
+import { ReactKeys } from "./components/ReactKeys/ReactKeys";
 import { ShowHide } from "./components/ShowHide/ShowHide";
 import { Users } from "./components/ReactKeys/Users";
-import { DogsOrder } from "./components/DogsOrder/DogsOrder";
+// import { DogsOrder } from "./components/DogsOrder/DogsOrder";
 import { CopyToClipBoard } from "./components/CopyToClipBoard/CopyToClipBoard";
 import { Forms } from "./components/Forms/Forms";
+import { MyForm } from "./components/MyForm/MyForm";
 
 import "./App.css";
 
 function App() {
   return (
     <div className="main">
-      <ShowHide />
-      <CopyToClipBoard />
-      <Forms />
-      <DogsOrder />
+      <MyForm />
       <details>
         <summary>Prev Q&A</summary>
         <div className="content">
           <div className="main">
+            <ShowHide />
+            <CopyToClipBoard />
+            <Forms />
+            {/* <DogsOrder /> */}
             <MyElement />
             {/* <ReactKeys /> */}
             <Users />
