@@ -1,33 +1,45 @@
-import { useState } from "react";
+import classes from "./MyForm.module.scss";
+import { useForm } from "../../hooks/useForm/useForm";
+import { validate } from "./LoginFormValidationRules";
 
 export const MyForm = () => {
-  const [value, setValue] = useState("");
-  const [checked, setChecked] = useState();
+  const { values, errors, handleChange, handleSubmit } = useForm(
+    login,
+    validate
+  );
 
-  const handleChange = (event) => setValue(event.target.value.toUpperCase());
-  const handleChangeCheckbox = (event) => setChecked(event.target.checked);
-
-  const handleSubmit = () => console.log("send");
+  function login() {
+    console.log("login");
+  }
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input type="text" value={value} onChange={handleChange}></input>
-        <label>Description:</label>
-        <textarea value="test" onChange={handleChange} />
-        <input type="submit" value="Отправить" />
-        <select>
-          <option value="js">JS</option>
-          <option value="react">React</option>
-          <option selected value="ts">
-            TS
-          </option>
-        </select>
-        <input type="checkbox" onChange={handleChangeCheckbox} />
-        <input type="file" />
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          autoComplete="off"
+          value={values.email || ""}
+          onChange={handleChange}
+          required
+        />
+        {errors.email && <p className={classes.isDanger}>{errors.email}</p>}
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          value={values.password || ""}
+          onChange={handleChange}
+          required
+        />
+        {errors.password && (
+          <p className={classes.isDanger}>{errors.password}</p>
+        )}
+        <button type="submit" value="Отправить">
+          Login
+        </button>
       </form>
-      <p>value: {value}</p>
     </>
   );
 };
