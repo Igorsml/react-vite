@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useForm = (callback, validate) => {
+const useForm = (callback, validate) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,5 +25,12 @@ export const useForm = (callback, validate) => {
     }));
   };
 
-  return { handleChange, handleSubmit, values, errors };
+  return {
+    handleChange,
+    handleSubmit,
+    values,
+    errors,
+  };
 };
+
+export default useForm;

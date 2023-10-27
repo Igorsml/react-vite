@@ -1,6 +1,7 @@
+import React from "react";
+import useForm from "../../hooks/useForm/useForm";
+import validate from "./LoginFormValidationRules";
 import classes from "./MyForm.module.scss";
-import { useForm } from "../../hooks/useForm/useForm";
-import { validate } from "./LoginFormValidationRules";
 
 export const MyForm = () => {
   const { values, errors, handleChange, handleSubmit } = useForm(
@@ -9,37 +10,41 @@ export const MyForm = () => {
   );
 
   function login() {
-    console.log("login");
+    alert("Success!");
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          autoComplete="off"
-          value={values.email || ""}
-          onChange={handleChange}
-          required
-        />
-        {errors.email && <p className={classes.isDanger}>{errors.email}</p>}
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          value={values.password || ""}
-          onChange={handleChange}
-          required
-        />
-        {errors.password && (
-          <p className={classes.isDanger}>{errors.password}</p>
-        )}
-        <button type="submit" value="Отправить">
-          Login
-        </button>
-      </form>
-    </>
+    <form onSubmit={handleSubmit} noValidate className={classes.formBody}>
+      <div className={classes.formGroup}>
+        <label className="label">Email Address</label>
+        <div className="control">
+          <input
+            autoComplete="off"
+            className={`${classes.formInput} ${errors.email && "isDanger"}`}
+            type="email"
+            name="email"
+            onChange={handleChange}
+            value={values.email || ""}
+            required
+          />
+        </div>
+      </div>
+      {errors.email && <p className={classes.isDanger}>{errors.email}</p>}
+      <div className={classes.formGroup}>
+        <label className="label">Password</label>
+        <div className="control">
+          <input
+            className={`${classes.formInput} ${errors.password && "isDanger"}`}
+            type="password"
+            name="password"
+            onChange={handleChange}
+            value={values.password || ""}
+            required
+          />
+        </div>
+      </div>
+      {errors.password && <p className={classes.isDanger}>{errors.password}</p>}
+      <button type="submit">Login</button>
+    </form>
   );
 };

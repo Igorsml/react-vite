@@ -15,36 +15,41 @@ import { Users } from "./components/ReactKeys/Users";
 import { CopyToClipBoard } from "./components/CopyToClipBoard/CopyToClipBoard";
 import { Forms } from "./components/Forms/Forms";
 import { MyForm } from "./components/MyForm/MyForm";
+import { RegForm } from "./components/RegForm/RegForm";
 
 import "./App.css";
 
 function App() {
   return (
-    <div className="main">
-      <MyForm />
-      <details>
-        <summary>Prev Q&A</summary>
-        <div className="content">
-          <div className="main">
-            <ShowHide />
-            <CopyToClipBoard />
-            <Forms />
-            {/* <DogsOrder /> */}
-            <MyElement />
-            {/* <ReactKeys /> */}
-            <Users />
-            <ContextParent />
-            <Counter />
-            <Counter />
-            <CounterUseState />
-            <CounterUseState />
-            <Provider store={storeTodo}>
-              <NewTodo />
-              <TodoList />
-            </Provider>
+    <div>
+      <h1>Auth AUF</h1>
+      <div className="main">
+        <RegForm />
+        <MyForm />
+        <details>
+          <summary>Prev Q&A</summary>
+          <div className="content">
+            <div className="main">
+              <ShowHide />
+              <CopyToClipBoard />
+              <Forms />
+              {/* <DogsOrder /> */}
+              <MyElement />
+              {/* <ReactKeys /> */}
+              <Users />
+              <ContextParent />
+              <Counter />
+              <Counter />
+              <CounterUseState />
+              <CounterUseState />
+              <Provider store={storeTodo}>
+                <NewTodo />
+                <TodoList />
+              </Provider>
+            </div>
           </div>
-        </div>
-      </details>
+        </details>
+      </div>
     </div>
   );
 }
