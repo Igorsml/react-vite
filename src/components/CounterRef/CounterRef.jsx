@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 
 export const CounterRef = () => {
   const [count, setCount] = useState(0);
+
   const prevCountRef = useRef();
 
   useEffect(() => {
@@ -13,10 +14,7 @@ export const CounterRef = () => {
   return (
     <>
       <button onClick={() => setCount(count + 1)}>Increment</button>
-      <p>
-        {" "}
-        Now: {count}, before: {prevCount}
-      </p>
+      Now: {count}, before: {prevCount}
     </>
   );
 };

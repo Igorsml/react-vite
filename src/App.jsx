@@ -16,7 +16,7 @@ import { CopyToClipBoard } from "./components/CopyToClipBoard/CopyToClipBoard";
 import { Forms } from "./components/Forms/Forms";
 import { MyForm } from "./components/MyForm/MyForm";
 import { RegForm } from "./components/RegForm/RegForm";
-import { CounterRef } from "./components/CounterRef/CounterRef";
+import { ParentComponent } from "./components/CounterRef/ParentComponent";
 
 import "./App.css";
 
@@ -25,7 +25,7 @@ function App() {
     <div>
       <h1>Auth AUF</h1>
       <div className="main">
-        <CounterRef />
+        <ParentComponent />
         <RegForm />
         <MyForm />
         <details>
