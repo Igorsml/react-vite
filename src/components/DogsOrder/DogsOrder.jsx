@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocalStorage } from "../../hooks/UseLocalStorage/UseLocalStorage";
 import { Dogs } from "../Dogs/Dogs";
 import { dogsList } from "../Dogs/DogsList";
@@ -7,7 +8,13 @@ export const DogsOrder = () => {
   const [order, setOrder] = useLocalStorage([], key);
 
   const value = `, ${order.map((item) => item.name)}`;
-  const handleClear = () => localStorage.clear();
+
+  useEffect(() => {
+    return () => handleClear;
+  });
+  const handleClear = () => {
+    localStorage.clear();
+  };
 
   const addToOrder = (id) => {
     const newItem = dogsList.find((item) => item.id === id);

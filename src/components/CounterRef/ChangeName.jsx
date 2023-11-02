@@ -12,13 +12,11 @@ export const ChangeName = (props) => {
     const userName = localStorage.getItem("userName");
     if (userName !== null) {
       setName(userName);
-      console.log("Got!");
     }
 
     return () => {
       console.log(nameRef.current);
       localStorage.setItem("userName", nameRef.current);
-      console.log("Saved!");
     };
   }, []);
 

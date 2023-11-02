@@ -1,20 +1,17 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef } from "react";
 
 export const CounterRef = () => {
-  const [count, setCount] = useState(0);
+  const countRef = useRef(0);
+  const handle = () => {
+    countRef.current++;
+    console.log(`Clicked ${countRef.current} times`);
+  };
 
-  const prevCountRef = useRef();
-
-  useEffect(() => {
-    prevCountRef.current = count;
-  });
-
-  const prevCount = prevCountRef.current;
+  console.log("useRef counter rendered");
 
   return (
     <>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      Now: {count}, before: {prevCount}
+      <button onClick={handle}>Try rerender</button>
     </>
   );
 };

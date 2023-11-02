@@ -1,20 +1,29 @@
 import { useState } from "react";
-import { CounterRef } from "./CounterRef";
 import { ChangeName } from "./ChangeName";
+import { ValueChangeDetector } from "./ValueChangeDetector";
+import { ExpensiveComponent } from "./ExpensiveComponent";
+import { CounterRef } from "./CounterRef";
+import { CounterSetCount } from "./CounterSetCount";
 
 export const ParentComponent = () => {
-  const [isShowing, setIsShowing] = useState(true);
+  const [count, setCount] = useState(0);
 
-  const unmountComponent = (s) => {
-    setIsShowing((s) => !s);
+  const increment = () => {
+    setCount(count + 1);
   };
 
   return (
-    <>
-      <button onClick={unmountComponent}>
-        {isShowing ? "Unmount" : "Mount"} This Component
-      </button>
-      {isShowing && <ChangeName unmount={unmountComponent} />}
-    </>
+    <div>
+      <div>
+        <button onClick={increment}>Increment parent count</button>
+        <p>parent count : {count}</p>
+        <CounterRef />
+        <CounterSetCount />
+        {/* <ValueChangeDetector value={count} /> */}
+      </div>
+      <div>
+        <ExpensiveComponent />
+      </div>
+    </div>
   );
 };

@@ -8,7 +8,7 @@ export const ShowHide = () => {
     <div style={{ position: "relative" }}>
       <h3>useToggle</h3>
       <button style={{ minWidth: "100px" }} onClick={toggleVisible}>
-        {isVisible ? "Show" : "Hide"}
+        {isVisible ? "Hide" : "Show"}
       </button>
       <div>
         {isVisible && (
@@ -17,7 +17,7 @@ export const ShowHide = () => {
               width: "330px",
               position: "absolute",
               left: "0px",
-              top: "100px",
+              top: "120px",
               borderRadius: "5px",
               zIndex: "1",
             }}
