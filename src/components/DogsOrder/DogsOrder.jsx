@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useLocalStorage } from "../../hooks/UseLocalStorage/UseLocalStorage";
 import { Dogs } from "../Dogs/Dogs";
 import { dogsList } from "../Dogs/DogsList";
@@ -9,9 +8,6 @@ export const DogsOrder = () => {
 
   const value = `, ${order.map((item) => item.name)}`;
 
-  useEffect(() => {
-    return () => handleClear;
-  });
   const handleClear = () => {
     localStorage.clear();
   };

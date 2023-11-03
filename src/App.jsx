@@ -16,7 +16,8 @@ import { CopyToClipBoard } from "./components/CopyToClipBoard/CopyToClipBoard";
 import { Forms } from "./components/Forms/Forms";
 import { MyForm } from "./components/MyForm/MyForm";
 import { RegForm } from "./components/RegForm/RegForm";
-import { ParentComponent } from "./components/CounterRef/ParentComponent";
+import { ParentComponent } from "./components/Refs/ParentComponent";
+import { InputRef } from "./components/Refs/InputRef";
 
 import "./App.css";
 
@@ -25,6 +26,7 @@ function App() {
     <div>
       <h1></h1>
       <div className="main">
+        <InputRef />
         <ParentComponent />
         <RegForm />
         <MyForm />

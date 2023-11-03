@@ -13,10 +13,11 @@ export function ExpensiveComponent() {
     return expensiveValueRef.current;
   };
 
-  console.log("render");
+  console.log("expensive render");
 
   return (
     <div>
+      <hr></hr>
       <p>Expensive Value: {calculateExpensiveValue()}</p>
       <button onClick={() => setCount(count + 1)}>Increment expensive</button>
       <p>count: {count}</p>

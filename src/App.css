@@ -47,6 +47,10 @@ li {
   border: 2px solid #ccc;
 }
 
+hr {
+  margin: 2em
+}
+
 
 details {
   box-sizing: border-box;

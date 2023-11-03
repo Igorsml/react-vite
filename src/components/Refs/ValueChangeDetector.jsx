@@ -20,11 +20,7 @@ export const ValueChangeDetector = (props) => {
 
   return (
     <>
-      <p>
-        prevValueRef stores the previous value of the value prop, allowing us to
-        compare it and take action when it changes.
-      </p>
-      <div>Value: {props.value}</div>
+      <div>ValueChangeDetector: {props.value}</div>
     </>
   );
 };

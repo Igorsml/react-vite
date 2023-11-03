@@ -5,11 +5,8 @@ export const CounterSetCount = () => {
 
   console.log("counter rendered");
   return (
-    <>
-      <button onClick={() => setCount(count + 1)}>
-        Increment setStateCount
-      </button>
-      Count2: {count}
-    </>
+    <button onClick={() => setCount(count + 1)}>
+      Increment setStateCount with re-render, count: {count}
+    </button>
   );
 };

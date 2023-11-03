@@ -8,18 +8,13 @@ import { CounterSetCount } from "./CounterSetCount";
 export const ParentComponent = () => {
   const [count, setCount] = useState(0);
 
-  const increment = () => {
-    setCount(count + 1);
-  };
-
   return (
     <div>
       <div>
-        <button onClick={increment}>Increment parent count</button>
-        <p>parent count : {count}</p>
         <CounterRef />
+        <hr></hr>
         <CounterSetCount />
-        {/* <ValueChangeDetector value={count} /> */}
+        <ValueChangeDetector value={count} />
       </div>
       <div>
         <ExpensiveComponent />

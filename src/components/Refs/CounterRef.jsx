@@ -10,8 +10,8 @@ export const CounterRef = () => {
   console.log("useRef counter rendered");
 
   return (
-    <>
+    <div>
       <button onClick={handle}>Try rerender</button>
-    </>
+    </div>
   );
 };
