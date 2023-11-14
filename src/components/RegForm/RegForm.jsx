@@ -62,8 +62,6 @@ export const RegForm = () => {
     }
   };
 
-  console.log(password.length);
-
   return (
     <form className={classes.formBody}>
       <h2>Регистрация</h2>

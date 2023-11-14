@@ -1,4 +1,4 @@
-import React from "react";
+import { useId } from "react";
 import useForm from "../../hooks/useForm/useForm";
 import validate from "./LoginFormValidationRules";
 import classes from "./MyForm.module.scss";
@@ -8,6 +8,7 @@ export const MyForm = () => {
     login,
     validate
   );
+  const id = useId();
 
   function login() {
     alert("Success!");
@@ -26,7 +27,9 @@ export const MyForm = () => {
             onChange={handleChange}
             value={values.email || ""}
             required
+            aria-describedby={id}
           />
+          <p id={id}>test use ID {id}</p>
         </div>
       </div>
       {errors.email && <p className={classes.isDanger}>{errors.email}</p>}
@@ -44,7 +47,18 @@ export const MyForm = () => {
         </div>
       </div>
       {errors.password && <p className={classes.isDanger}>{errors.password}</p>}
-      <button type="submit">Login</button>
+      <button type="submit">Login My Form</button>
+      <MyForm2 />
     </form>
+  );
+};
+
+const MyForm2 = () => {
+  const id = useId();
+  return (
+    <div>
+      <input aria-describedby={id} />
+      <p id={id}>test use ID {id}</p>
+    </div>
   );
 };

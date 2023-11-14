@@ -8,7 +8,7 @@ export const InputRef = () => {
   };
 
   useEffect(() => {
-    console.log(inputRef.current);
+    // console.log(inputRef.current);
   });
 
   return (

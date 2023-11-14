@@ -8,12 +8,12 @@ export function ExpensiveComponent() {
     if (expensiveValueRef.current === 0) {
       // Perform expensive calculation
       expensiveValueRef.current = "42";
-      console.log("expensiveValueRef.current");
+      // console.log("expensiveValueRef.current");
     }
     return expensiveValueRef.current;
   };
 
-  console.log("expensive render");
+  // console.log("expensive render");
 
   return (
     <div>

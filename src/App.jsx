@@ -18,6 +18,7 @@ import { MyForm } from "./components/MyForm/MyForm";
 import { RegForm } from "./components/RegForm/RegForm";
 import { ParentComponent } from "./components/Refs/ParentComponent";
 import { InputRef } from "./components/Refs/InputRef";
+import { HooksTest } from "./components/HooksTest/HooksTest";
 
 import "./App.css";
 
@@ -26,14 +27,15 @@ function App() {
     <div>
       <h1></h1>
       <div className="main">
-        <InputRef />
-        <ParentComponent />
-        <RegForm />
-        <MyForm />
         <details>
           <summary>Prev Q&A</summary>
           <div className="content">
             <div className="main">
+              <HooksTest />
+              <InputRef />
+              <ParentComponent />
+              <RegForm />
+              <MyForm />
               <ShowHide />
               <CopyToClipBoard />
               <Forms />

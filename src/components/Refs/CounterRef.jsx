@@ -7,7 +7,7 @@ export const CounterRef = () => {
     console.log(`Clicked ${countRef.current} times`);
   };
 
-  console.log("useRef counter rendered");
+  // console.log("useRef counter rendered");
 
   return (
     <div>
