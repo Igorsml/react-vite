@@ -46,15 +46,181 @@ console.log(getEvenNumbers(numbers));
 
 
 // # 5 найти анаграммы
-function filterAnagrams(anagramWord:string, arr:string[]):string[] {
+function filterAnagrams(anagramWord: string, anagrams: string[]): string[] {
+  const standard:string = anagramWord.split('').sort().join('');
 
-  for (const num of arr) {
-      if (num.length !== anagramWord.length) {
-          return;
-      } else {
-  
-      }
-  }
-  }
+  return anagrams.filter((item:string) => item.split('').sort().join('') === standard);
+}
 
-  
+console.log(filterAnagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada'])); // ['aabb', 'bbaa']
+console.log(filterAnagrams('laser', ['lazing', 'lazy',  'lacer'])); // []
+
+
+// # 6 если в курсе меньше 4 уроков то false, иначе true
+const course = {
+  name: 'Java',
+  lessons: ['variables', 'functions', 'conditions'],
+};
+
+const isComplete = (course: {name: string, lessons: string[]}):boolean => course.lessons.length > 3 ? true : false;
+
+
+console.log(isComplete(course)); // false
+
+// # 7 Реализуйте перечисление ModalStatus с двумя значениями: Opened и Closed
+// Реализуйте функцию buildModal(). Он возвращает объект, который описывает модальное окно
+
+enum ModalStatus {
+  Opened,
+  Closed,
+}
+
+interface ObjectModal {
+  text: string;
+  status: number;
+}
+
+function buildModal(modalText: string, modalStatus: number): ObjectModal {
+  return {text: modalText, status: modalStatus};
+}
+
+
+const modal = buildModal('hexlet forever', ModalStatus.Opened);
+console.log(modal);
+// # 8
+
+
+// # 9
+
+
+
+// # 10
+
+
+// # 11
+
+
+// # 12
+
+
+// # 13
+
+
+// # 14
+
+
+// # 15
+
+
+// # 16
+
+
+// # 17
+
+
+// # 18
+
+
+// # 19
+
+
+// # 20
+
+
+// # 21
+
+
+// # 22
+
+
+// # 23
+
+
+// # 24
+
+
+// # 25
+
+
+// # 26
+
+
+// # 27
+
+
+// # 28
+
+
+// # 29
+
+
+// # 30
+
+
+// # 31
+
+
+// # 32
+
+
+// # 33
+
+
+// # 34
+
+
+// # 35
+
+
+// # 36
+
+
+// # 37
+
+
+// # 38
+
+
+// # 39
+
+
+// # 40
+
+
+// # 41
+
+
+// # 42
+
+
+// # 43
+
+
+// # 44
+
+
+// # 45
+
+
+// # 46
+
+
+// # 47
+
+
+// # 48
+
+
+// # 49
+
+
+// # 50
+
+
+// # 51
+
+
+// # 52
+
+
+// # 53
