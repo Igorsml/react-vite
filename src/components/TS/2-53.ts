@@ -1,11 +1,11 @@
-// #1 суммировать
+// # 2 суммировать
 const multiply = (numOne: number, numTwo: number) => numOne * numTwo; 
 
 console.log(multiply(2, 2)); // 4
 
 
 
-// #2 повторить строку
+// # 3 повторить строку
 function repeat(text: string, count: number):string {
   let resultStr:string = '';
 
@@ -20,7 +20,7 @@ function repeat(text: string, count: number):string {
 console.log(repeat('aboba', 2)); // 'abobaaboba'
 
 
-// #3 зашифровать № карты
+// # 4 зашифровать № карты
 function getHiddenCard(cardNumber: number, starCount:number = 4):string {
   const star:string = '*';
   const cardNumberTail = String(cardNumber).substring(String(cardNumber).length - 4);
@@ -32,7 +32,7 @@ return star.repeat(starCount) + cardNumberTail;
 console.log(getHiddenCard('1234567812345678', 2)); // "**5678"
 console.log(getHiddenCard('1234567812345678', 3)); // "***5678"
 
-// # 4 вернуть чётные
+// # 5 вернуть чётные
 const numbers = [1, 3, 8, 9, 100, 23, 55, 34];
 
 function getEvenNumbers(arrOfNums:number[]):number[] {
@@ -45,7 +45,7 @@ function getEvenNumbers(arrOfNums:number[]):number[] {
 console.log(getEvenNumbers(numbers));
 
 
-// # 5 найти анаграммы
+// # 6 найти анаграммы
 function filterAnagrams(anagramWord: string, anagrams: string[]): string[] {
   const standard:string = anagramWord.split('').sort().join('');
 
@@ -56,7 +56,7 @@ console.log(filterAnagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada'])); // ['aabb
 console.log(filterAnagrams('laser', ['lazing', 'lazy',  'lacer'])); // []
 
 
-// # 6 если в курсе меньше 4 уроков то false, иначе true
+// # 7 если в курсе меньше 4 уроков то false, иначе true
 const course = {
   name: 'Java',
   lessons: ['variables', 'functions', 'conditions'],
@@ -67,7 +67,7 @@ const isComplete = (course: {name: string, lessons: string[]}):boolean => course
 
 console.log(isComplete(course)); // false
 
-// # 7 Реализуйте перечисление ModalStatus с двумя значениями: Opened и Closed
+// # 8 Реализуйте перечисление ModalStatus с двумя значениями: Opened и Closed
 // Реализуйте функцию buildModal(). Он возвращает объект, который описывает модальное окно
 
 enum ModalStatus {
@@ -85,20 +85,61 @@ function buildModal(modalText: string, modalStatus: number): ObjectModal {
 }
 
 
-const modal = buildModal('hexlet forever', ModalStatus.Opened);
+const modal = buildModal('abobus forever', ModalStatus.Opened);
 console.log(modal);
-// # 8
 
 
 // # 9
+type User = {
+  name: string,
+  age: number,
+}
 
+function getOlderUser (user1: User, user2: User) {
+  if (user1.age === user2.age) return null;
+
+  return user1.age > user2.age ? user1 : user2;
+}
+
+const user1 = { name: 'Axe', age: 8 };
+const user2 = { name: 'Exa', age: 8 };
+
+console.log( getOlderUser(user1, user2));
 
 
 // # 10
+function getParams(queryStr: string): object {
+  const resultObj: any = {};
 
+  return queryStr.split('&').reduce((acc, query) => {
+    const [key, value] = query.split('=');
+    acc[key] = value;
+    return acc;
+  }, resultObj);
+}
 
-// # 11
+console.log(getParams('per=10&page=5')); // { per: '10', page: '5' }
 
+// # 11 Реализуйте namespace Company, в котором экспортируется функция isEmployeeEmail(). Функция принимает почту и домен. Если емейл пользователя содержит указанный домен, то функция возвращает true
+namespace Company {
+  export function isEmployeeEmail(email: string, domain: string): boolean {
+    const tailEmail: string = email.split('@').slice(-1)[0];
+    // или email.endsWith(`@${domain}`);
+
+    return tailEmail === domain;
+  }
+}
+
+type User = {
+  email: string
+};
+
+function authorize(user: User | null): boolean {
+  const companyDomain = 'hexlet.io';
+  const email = user?.email ?? '';
+
+  return Company.isEmployeeEmail(email, companyDomain);
+}
 
 // # 12
 
