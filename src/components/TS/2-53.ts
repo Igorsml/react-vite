@@ -141,26 +141,77 @@ function authorize(user: User | null): boolean {
   return Company.isEmployeeEmail(email, companyDomain);
 }
 
-// # 12
+
+// # 12 Реализуйте функцию filter(), которая принимает на вход массив чисел и предикат. Последний будет использоваться для проверки каждого числа на соответствие требованиям:
+type filterFun = (num:number) => boolean;
+
+function filter(arrOfNumbers: number[], callback: filterFun):number[] {
+    const result = arrOfNumbers.filter(callback);
+    
+    return result;
+}
+
+const numbers = [1, -5, 2, 3, 4, 133];
+
+console.log(filter(numbers, (n) => n > 3)); // [4, 133]
+console.log(filter(numbers, (n) => n % 2 == 0)); // [2, 4]
 
 
-// # 13
+// # 13 map
+type mapCallback = (num: number, index: number) => number;
+
+function map(numbers: number[], callback: mapCallback): number[] {
+    const result = numbers.map(callback);
+    return result;
+}
+
+console.log(map([3, 9], (n) => n - 3)); // [0, 6]
 
 
-// # 14
+// # 14 forEach
+type forEachCb = (num:number, index:number) => void;
+
+function forEach(arrOfNumbers: number[], callback: forEachCb):void {
+    return arrOfNumbers.forEach(callback);
+}
+
+forEach([8, 9], (n, index) => console.log(index + n)); // 9, 10
 
 
-// # 15
+
+// # 15 Реализуйте функцию fail(), которая выбрасывает любое исключение. Пропишете ее возвращаемый тип явно.
+function fail():never {
+  throw new Error('Aboba');
+}
 
 
-// # 16
+// # 16 Реализуйте функцию isPlainObject(), которая проверяет, является ли переданное значение объектом. Эта функция считает, что массив не объект:
+function isPlainObject (value: unknown):boolean {
+  return Object.getPrototypeOf(value) === Object.prototype;
+}
 
+console.log(isPlainObject(1)); // false
+console.log(isPlainObject('hexlet')); // false
+console.log(isPlainObject({})); // true
+console.log(isPlainObject({ name: 'code-basics' })); // true
+console.log(isPlainObject([1, 8])); // false
 
 // # 17
+function lessonsCount({ lessons }: { lessons: string[]}):number {
+  return lessons.length;
+}
 
+const course = { lessons: ['intro', 'lala'] };
 
-// # 18
+console.log(lessonsCount(course)); // Output: 2
 
+// # 18 Rest и Spread
+function max(numOne:number, ...numbers:number[]):number {
+  return Math.max(numOne, ...numbers)
+}
+
+console.log(max(1,2,3)); // 3
+console.log(max(234)); // 234
 
 // # 19
 
