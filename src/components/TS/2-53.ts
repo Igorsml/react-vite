@@ -213,16 +213,88 @@ function max(numOne:number, ...numbers:number[]):number {
 console.log(max(1,2,3)); // 3
 console.log(max(234)); // 234
 
-// # 19
 
 
-// # 20
+// # 19 Перегрузка функций (Function Overloads)
+type Overload = {
+  (name: string): string;
+  (name: string, year?: unknown): string;
+}
+
+const newYearCongratulate: Overload = (arg1, arg2?) => {
+  if (typeof arg1 === 'string') {
+      return `Hi ${arg1}! Happy New Year!`;
+  }
+      return `Hi ${arg2}! Happy New Year ${arg1}!`;
+}
+
+// или 
+function newYearCongratulate(name: string): string;
+function newYearCongratulate(year: number, name: string): string;
+function newYearCongratulate(data1: string | number, data2?: string): string {
+  if (typeof data1 === 'number') {
+    return `Hi ${data2}! Happy New Year ${data1}!`;
+  }
+
+  return `Hi ${data1}! Happy New Year!`;
+}
 
 
-// # 21
+// # 20 Реализуйте функцию last(), которая извлекает последний элемент из переданного значения. Значением может быть строка или число. Функция возвращает значение того же типа, которое было передано в качестве параметра:
+function last(value: string | number): string | number {
+  if (typeof value === "string") {
+      return value.slice(-1)
+  }
+
+  return Number(String(value).slice(-1));
+}
+
+// Функция возвращает строку
+console.log(last('aboba')); // a
+
+// Функция возвращает число
+console.log(last(12345)); // 5
 
 
-// # 22
+// # 21 Реализуйте функцию unique(), которая убирает дубликаты из массива. Функция принимает на вход массив чисел и строк. Результатом работы функции должен быть новый массив, в котором сохраняется только первое вхождение каждого элемента. Порядок значений результата определяется порядком их появления в массиве.
+function unique(value: Array<string | number>):(number | string)[] {
+  return Array.from(new Set(value));
+}
+
+console.log(unique([9, 9, 3, 8, 8])); // [9, 3, 8]
+console.log(unique(['twinkle', 'twinkle', 'little', 'bat'])); // ['twinkle', 'little', 'bat']
+console.log(unique([1, 1, 3, 'oops!'])); // [1, 3, 'oops!']
+
+// или
+function unique(coll: (number | string)[]): (number | string)[] {
+  const init: (number | string)[] = [];
+
+  return coll.reduce(
+    (acc, curr) => (acc.includes(curr) ? acc : [...acc, curr]),
+    init,
+  );
+}
+
+
+// # 22 Реализуйте функцию getField(), которая генерирует игровое поле для крестиков ноликов. Функция принимает на вход размерность поля и возвращает массив массивов нужного размера, заполненный значениями null.
+function getField(value: number) {
+  const result: null[][] = [];
+
+  while (value > 0) {
+    result.push(new Array(value).fill(null, 0, value));
+    value--;
+  }
+
+  return result;
+}
+
+const field1 = getField(1);
+console.log(field1);
+// [[null]]
+
+const field2 = getField(2);
+console.log(field2);
+// [[null, null], [null, null]]
 
 
 // # 23
