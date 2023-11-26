@@ -1,15 +1,15 @@
 // # 2 суммировать
-const multiply = (numOne: number, numTwo: number) => numOne * numTwo; 
+const multiply = (numOne: number, numTwo: number) => numOne * numTwo;
 
 console.log(multiply(2, 2)); // 4
 
 
 
 // # 3 повторить строку
-function repeat(text: string, count: number):string {
-  let resultStr:string = '';
+function repeat(text: string, count: number): string {
+  let resultStr: string = '';
 
-  for (let i:number = 0; i < count; i++) {
+  for (let i: number = 0; i < count; i++) {
     resultStr += text;
   }
 
@@ -21,12 +21,12 @@ console.log(repeat('aboba', 2)); // 'abobaaboba'
 
 
 // # 4 зашифровать № карты
-function getHiddenCard(cardNumber: number, starCount:number = 4):string {
-  const star:string = '*';
+function getHiddenCard(cardNumber: number, starCount: number = 4): string {
+  const star: string = '*';
   const cardNumberTail = String(cardNumber).substring(String(cardNumber).length - 4);
 
 
-return star.repeat(starCount) + cardNumberTail;
+  return star.repeat(starCount) + cardNumberTail;
 }
 
 console.log(getHiddenCard('1234567812345678', 2)); // "**5678"
@@ -35,11 +35,11 @@ console.log(getHiddenCard('1234567812345678', 3)); // "***5678"
 // # 5 вернуть чётные
 const numbers = [1, 3, 8, 9, 100, 23, 55, 34];
 
-function getEvenNumbers(arrOfNums:number[]):number[] {
-    const getEven = (num:number): boolean => num % 2 === 0;
-    const resultArr = arrOfNums.filter(getEven);
+function getEvenNumbers(arrOfNums: number[]): number[] {
+  const getEven = (num: number): boolean => num % 2 === 0;
+  const resultArr = arrOfNums.filter(getEven);
 
-    return resultArr;
+  return resultArr;
 }
 
 console.log(getEvenNumbers(numbers));
@@ -47,13 +47,13 @@ console.log(getEvenNumbers(numbers));
 
 // # 6 найти анаграммы
 function filterAnagrams(anagramWord: string, anagrams: string[]): string[] {
-  const standard:string = anagramWord.split('').sort().join('');
+  const standard: string = anagramWord.split('').sort().join('');
 
-  return anagrams.filter((item:string) => item.split('').sort().join('') === standard);
+  return anagrams.filter((item: string) => item.split('').sort().join('') === standard);
 }
 
 console.log(filterAnagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada'])); // ['aabb', 'bbaa']
-console.log(filterAnagrams('laser', ['lazing', 'lazy',  'lacer'])); // []
+console.log(filterAnagrams('laser', ['lazing', 'lazy', 'lacer'])); // []
 
 
 // # 7 если в курсе меньше 4 уроков то false, иначе true
@@ -62,7 +62,7 @@ const course = {
   lessons: ['variables', 'functions', 'conditions'],
 };
 
-const isComplete = (course: {name: string, lessons: string[]}):boolean => course.lessons.length > 3 ? true : false;
+const isComplete = (course: { name: string, lessons: string[] }): boolean => course.lessons.length > 3 ? true : false;
 
 
 console.log(isComplete(course)); // false
@@ -81,7 +81,7 @@ interface ObjectModal {
 }
 
 function buildModal(modalText: string, modalStatus: number): ObjectModal {
-  return {text: modalText, status: modalStatus};
+  return { text: modalText, status: modalStatus };
 }
 
 
@@ -95,7 +95,7 @@ type User = {
   age: number,
 }
 
-function getOlderUser (user1: User, user2: User) {
+function getOlderUser(user1: User, user2: User) {
   if (user1.age === user2.age) return null;
 
   return user1.age > user2.age ? user1 : user2;
@@ -104,7 +104,7 @@ function getOlderUser (user1: User, user2: User) {
 const user1 = { name: 'Axe', age: 8 };
 const user2 = { name: 'Exa', age: 8 };
 
-console.log( getOlderUser(user1, user2));
+console.log(getOlderUser(user1, user2));
 
 
 // # 10
@@ -143,12 +143,12 @@ function authorize(user: User | null): boolean {
 
 
 // # 12 Реализуйте функцию filter(), которая принимает на вход массив чисел и предикат. Последний будет использоваться для проверки каждого числа на соответствие требованиям:
-type filterFun = (num:number) => boolean;
+type filterFun = (num: number) => boolean;
 
-function filter(arrOfNumbers: number[], callback: filterFun):number[] {
-    const result = arrOfNumbers.filter(callback);
-    
-    return result;
+function filter(arrOfNumbers: number[], callback: filterFun): number[] {
+  const result = arrOfNumbers.filter(callback);
+
+  return result;
 }
 
 const numbers = [1, -5, 2, 3, 4, 133];
@@ -161,18 +161,18 @@ console.log(filter(numbers, (n) => n % 2 == 0)); // [2, 4]
 type mapCallback = (num: number, index: number) => number;
 
 function map(numbers: number[], callback: mapCallback): number[] {
-    const result = numbers.map(callback);
-    return result;
+  const result = numbers.map(callback);
+  return result;
 }
 
 console.log(map([3, 9], (n) => n - 3)); // [0, 6]
 
 
 // # 14 forEach
-type forEachCb = (num:number, index:number) => void;
+type forEachCb = (num: number, index: number) => void;
 
-function forEach(arrOfNumbers: number[], callback: forEachCb):void {
-    return arrOfNumbers.forEach(callback);
+function forEach(arrOfNumbers: number[], callback: forEachCb): void {
+  return arrOfNumbers.forEach(callback);
 }
 
 forEach([8, 9], (n, index) => console.log(index + n)); // 9, 10
@@ -180,13 +180,13 @@ forEach([8, 9], (n, index) => console.log(index + n)); // 9, 10
 
 
 // # 15 Реализуйте функцию fail(), которая выбрасывает любое исключение. Пропишете ее возвращаемый тип явно.
-function fail():never {
+function fail(): never {
   throw new Error('Aboba');
 }
 
 
 // # 16 Реализуйте функцию isPlainObject(), которая проверяет, является ли переданное значение объектом. Эта функция считает, что массив не объект:
-function isPlainObject (value: unknown):boolean {
+function isPlainObject(value: unknown): boolean {
   return Object.getPrototypeOf(value) === Object.prototype;
 }
 
@@ -197,7 +197,7 @@ console.log(isPlainObject({ name: 'code-basics' })); // true
 console.log(isPlainObject([1, 8])); // false
 
 // # 17
-function lessonsCount({ lessons }: { lessons: string[]}):number {
+function lessonsCount({ lessons }: { lessons: string[] }): number {
   return lessons.length;
 }
 
@@ -206,11 +206,11 @@ const course = { lessons: ['intro', 'lala'] };
 console.log(lessonsCount(course)); // Output: 2
 
 // # 18 Rest и Spread
-function max(numOne:number, ...numbers:number[]):number {
+function max(numOne: number, ...numbers: number[]): number {
   return Math.max(numOne, ...numbers)
 }
 
-console.log(max(1,2,3)); // 3
+console.log(max(1, 2, 3)); // 3
 console.log(max(234)); // 234
 
 
@@ -223,9 +223,9 @@ type Overload = {
 
 const newYearCongratulate: Overload = (arg1, arg2?) => {
   if (typeof arg1 === 'string') {
-      return `Hi ${arg1}! Happy New Year!`;
+    return `Hi ${arg1}! Happy New Year!`;
   }
-      return `Hi ${arg2}! Happy New Year ${arg1}!`;
+  return `Hi ${arg2}! Happy New Year ${arg1}!`;
 }
 
 // или 
@@ -243,7 +243,7 @@ function newYearCongratulate(data1: string | number, data2?: string): string {
 // # 20 Реализуйте функцию last(), которая извлекает последний элемент из переданного значения. Значением может быть строка или число. Функция возвращает значение того же типа, которое было передано в качестве параметра:
 function last(value: string | number): string | number {
   if (typeof value === "string") {
-      return value.slice(-1)
+    return value.slice(-1)
   }
 
   return Number(String(value).slice(-1));
@@ -257,7 +257,7 @@ console.log(last(12345)); // 5
 
 
 // # 21 Реализуйте функцию unique(), которая убирает дубликаты из массива. Функция принимает на вход массив чисел и строк. Результатом работы функции должен быть новый массив, в котором сохраняется только первое вхождение каждого элемента. Порядок значений результата определяется порядком их появления в массиве.
-function unique(value: Array<string | number>):(number | string)[] {
+function unique(value: Array<string | number>): (number | string)[] {
   return Array.from(new Set(value));
 }
 
@@ -279,13 +279,22 @@ function unique(coll: (number | string)[]): (number | string)[] {
 // # 22 Реализуйте функцию getField(), которая генерирует игровое поле для крестиков ноликов. Функция принимает на вход размерность поля и возвращает массив массивов нужного размера, заполненный значениями null.
 function getField(value: number) {
   const result: null[][] = [];
+  let counter: number = value;
 
-  while (value > 0) {
-    result.push(new Array(value).fill(null, 0, value));
-    value--;
+  for (let i = 0; i <= counter; i++) {
+    for (let j = 0; j <= counter; j++) {
+      result.push(new Array(value).fill(null, 0, value));
+      counter--;
+    }
   }
 
   return result;
+}
+
+// или 
+function getField(size: number): null[][] {
+  const field = Array<null>(size).fill(null).map(() => Array<null>(size).fill(null));
+  return field;
 }
 
 const field1 = getField(1);
@@ -297,7 +306,24 @@ console.log(field2);
 // [[null, null], [null, null]]
 
 
-// # 23
+// # 23 Реализуйте функцию reverse(), которая переворачивает массив. Технически она должна возвращать новый массив, в котором элементы расположены в обратном порядке. Используйте модификатор readonly для входящего массива. Не используйте встроенный метод reverse().
+function reverse(arrOfNumbers: readonly number[]): number [] {
+  const result: number[] = [];
+
+  for (let i = arrOfNumbers.length - 1; i >= 0; i--) {
+      result.push(arrOfNumbers[i])
+  }
+
+  return result;
+}
+
+console.log(reverse([1, 2, 8])); // [8, 2, 1]
+console.log(reverse([10, 33, 7, 0])); // [0, 7, 33, 10]
+
+// или
+function reverse(coll: readonly number[]): number[] {
+  return coll.map((_, index) => coll[coll.length - 1 - index]);
+}
 
 
 // # 24
