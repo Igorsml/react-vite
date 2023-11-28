@@ -326,23 +326,187 @@ function reverse(coll: readonly number[]): number[] {
 }
 
 
-// # 24
+// # 24 Создайте и экспортируйте тип Point, который описывает точку в пространстве, состоящую из трех координат: x, y, z.
+
+// Реализуйте функцию isTheSamePoint(), которая проверяет две точки на их одинаковое расположение. Две точки совпадают, если совпадают все их координаты:
+
+type Point = [number, number, number];
+
+function isTheSamePoint(point1: Point, point2: Point): boolean {
+    let sumPoint1:number = 0;
+    let sumPoint2:number = 0;
+    
+    point1.forEach((value) => sumPoint1 += value);
+    point2.forEach((value) => sumPoint2 += value);
+
+    return sumPoint1 === sumPoint2;
+}
+
+// или
+function isTheSamePoint(p1: Point, p2: Point): boolean {
+  return p1.every((el, i) => el === p2[i]);
+}
+
+const p1: Point = [1, 3, 4];
+const p2: Point = [1, 3, 4];
+const p3: Point = [0, 8, 4];
+
+console.log(isTheSamePoint(p1, p2)); // true
+console.log(isTheSamePoint(p1, p3)); // false
+console.log(isTheSamePoint(p2, p3)); // false
+
+// # 25 Определите тип CustomType, который может принимать следующие значения: null, undefined, number
+type CustomType = null | undefined | number;
 
 
-// # 25
+
+// # 26 Реализуйте функцию lastIndex(str, char), которая возвращает индекс последнего вхождения символа в строку или null, если такого символа нет.
+type AllowedToLastIndex = string | number | null;
+
+function lastIndex(str: AllowedToLastIndex, char: AllowedToLastIndex): AllowedToLastIndex {
+    if (str === null || typeof str === 'number') {
+        return null; 
+    }
+
+    const arrayFromString: string[] = str.split('');
+
+    let result: number | null = null;
+
+    for (let i = arrayFromString.length - 1; i >= 0; i--) {
+        if (char === arrayFromString[i]) {
+            result = i;
+            break;
+        }
+    }
+
+    return result;
+}
+
+// или
+function lastIndex(str: string, char: string): number | null {
+  const index = str.lastIndexOf(char);
+  return index === -1 ? null : index;
+}
+
+const str = 'test';
+console.log(lastIndex(str, 't')); // 3
+console.log(lastIndex(str, 'p')); // null
 
 
-// # 26
+
+// # 27 Реализуйте функцию formatPrice(), которая принимает число и возвращает строку с округлением до второго числа после запятой. Если пришел null или undefined должна вернуться '$0.00'.
+function formatPrice(price?: number | null): string {
+  if (price !== null && price !== undefined) {
+      return '$' + price.toFixed(2);
+  }
+
+  return '$0.00';
+}
+
+// # 28 Реализуйте функцию makeTurn(), которая принимает строку left или right и перемещает черепашку вперед-назад по одномерному массиву фиксированного размера с пятью элементами. Если черепашка выходит за пределы массива, то выбрасывается исключение.
+
+type Turtle = 'turtle' | null;
+
+type Game = {
+  makeTurn: (direction: 'left' | 'right') => void;
+  state: Turtle[];
+};
+
+const startGame = (): Game => {
+  const state: Turtle[] = ['turtle', null, null, null, null];
+
+  const makeTurn = (direction: 'left' | 'right') => {
+    if (
+      (direction === 'left' && typeof state[0] === 'string') ||
+      (direction === 'right' && typeof state[state.length - 1] === 'string')
+    ) {
+      throw new Error('Invalid turn');
+    }
+
+    if (direction === 'right') {
+      for (let i = state.length - 1; i >= 0; i--) {
+        if (i === state.length - 1) {
+          state[i] = null;
+        } else {
+          state[i + 1] = state[i];
+          state[i] = null;
+        }
+      }
+    }
+
+    if (direction === 'left') {
+      for (let i = 0; i < state.length; i++) {
+        if (i === 0 && typeof state[i] === 'string') {
+          state[i] = null;
+          break;
+        }
+        if (typeof state[i] === 'string' && state[i - 1] === null) {
+          state[i - 1] = state[i];
+          state[i] = null;
+        }
+      }
+    }
+  };
+
+  return { makeTurn, state };
+};
+
+const { makeTurn, state } = startGame();
+console.log(state); // ['turtle', null, null, null, null]
+// makeTurn('left') // ERROR - Invalid turn
+
+// или 
+const makeTurn = (direction: 'left' | 'right'): void => {
+  const turtleIndex = state.indexOf('turtle');
+  const nextIndex = direction === 'left' ? turtleIndex - 1 : turtleIndex + 1;
+
+  if (nextIndex < 0 || nextIndex > state.length) {
+    throw new Error('Out of bounds');
+  }
+
+  state[turtleIndex] = null;
+  state[nextIndex] = 'turtle';
+};
+
+makeTurn('right');
+makeTurn('right');
+makeTurn('right');
+makeTurn('right');
+
+makeTurn('left');
+makeTurn('left');
+
+console.log(state); // [null, null, 'turtle', null, null]
 
 
-// # 27
 
+// # 29 Реализуйте тип Admin, который является пересечением типов AdminPermission и User. Реализуйте функцию addAdmin(), которая принимает значение с типом User и возвращает значение с типом Admin. В качестве значения для свойства permission должно быть значение Permission.READ.
+enum Permission {
+  READ,
+  WRITE,
+  DELETE,
+}
 
-// # 28
+type User = {
+  login: string;
+};
 
+type AdminPermission = {
+  permission: Permission;
+};
 
-// # 29
+type Admin = AdminPermission & User;
 
+function addAdmin(user: User): Admin {
+  return {
+    login: user.login,
+    permission: Permission.READ,
+  };
+}
+
+const user: User = { login: 'login1' };
+const admin = addAdmin(user);
+console.log(admin); // { login: 'login1', permission: Permission.READ }
 
 // # 30
 
