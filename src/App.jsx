@@ -19,6 +19,7 @@ import { RegForm } from "./components/RegForm/RegForm";
 import { ParentComponent } from "./components/Refs/ParentComponent";
 import { InputRef } from "./components/Refs/InputRef";
 import { HooksTest } from "./components/HooksTest/HooksTest";
+import { ScreenSize } from "./components/ScreenSize/ScreenSize";
 
 import "./App.css";
 
@@ -26,6 +27,7 @@ function App() {
   return (
     <div>
       <h1></h1>
+      <ScreenSize />
       <div className="main">
         <details>
           <summary>Prev Q&A</summary>
