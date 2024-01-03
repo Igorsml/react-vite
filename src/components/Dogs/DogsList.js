@@ -2,7 +2,7 @@ export const dogsList = [
   {
     name: "Roman39",
     photoUrl:
-      "https://loremflickr.com/cache/resized/5223_5857706764_8c72858f29_c_640_480_nofilter.jpg",
+      "https://sun9-27.userapi.com/impg/hN-x7HokDeR2zupJAkuM-hOZvxGUpAoN7bWfZQ/UGbnXH5O5AQ.jpg?size=1453x2160&quality=95&sign=4beba96514f35f8637ad5d050922d40c&type=album",
     age: 79,
     weight: 11,
     male: "Androgynous",
@@ -11,7 +11,7 @@ export const dogsList = [
   {
     name: "Tommie_Fahey",
     photoUrl:
-      "https://loremflickr.com/cache/resized/65535_52843303586_2d647ab1c6_z_640_480_nofilter.jpg",
+      "https://sun9-42.userapi.com/impg/yduhMXThtppqMI63jkjUSbqZ5uW-e_qGmqcLmA/gEHweZX3mR0.jpg?size=853x1280&quality=95&sign=fefeb0d2903df4ed6f42474229cac37d&type=album",
     age: 65,
     weight: 93,
     male: "Female to male",
@@ -20,7 +20,7 @@ export const dogsList = [
   {
     name: "Hattie.Feil",
     photoUrl:
-      "https://loremflickr.com/cache/resized/65535_52963157580_7b73007a72_c_640_480_nofilter.jpg",
+      "https://sun9-79.userapi.com/impg/249EW_8DOTekQVYGmLrYWLld9NdGVslp7lR3oQ/Ez1_bo6II3E.jpg?size=1844x2160&quality=95&sign=aba846999a61b01771ea509480366eac&type=album",
     age: 79,
     weight: 61,
     male: "Demi-girl",
@@ -29,7 +29,7 @@ export const dogsList = [
   {
     name: "Ethyl11",
     photoUrl:
-      "https://loremflickr.com/cache/resized/65535_52819214000_aa4126dd67_c_640_480_nofilter.jpg",
+      "https://sun9-78.userapi.com/impg/BbXmuDIA65KNCG1j90lkWRa8lB2qP7lhY-L78A/BnRpAG9hSII.jpg?size=628x838&quality=95&sign=5c96acd983878cda0a97505847dc774e&type=album",
     age: 52,
     weight: 73,
     male: "Two* person",
@@ -38,7 +38,7 @@ export const dogsList = [
   {
     name: "Bethel_Purdy5",
     photoUrl:
-      "https://loremflickr.com/cache/resized/65535_52725263795_bed7d72cb4_c_640_480_nofilter.jpg",
+      "https://sun9-75.userapi.com/impg/FlE6deCnb-97AkvxqYbPwKf4bG6aayxpOPHRfg/90eYptB-Pvw.jpg?size=786x1048&quality=95&sign=b40702cc7b26d983084efad2504ab7a7&type=album",
     age: 15,
     weight: 35,
     male: "Trigender",

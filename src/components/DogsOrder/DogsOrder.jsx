@@ -4,18 +4,19 @@ import { dogsList } from "../Dogs/DogsList";
 
 export const DogsOrder = () => {
   const key = "orders";
+
   const [order, setOrder] = useLocalStorage([], key);
 
   const value = `, ${order.map((item) => item.name)}`;
-
-  const handleClear = () => {
-    localStorage.clear();
-  };
 
   const addToOrder = (id) => {
     const newItem = dogsList.find((item) => item.id === id);
 
     setOrder([...order, newItem]);
+  };
+
+  const handleClear = () => {
+    setOrder([]);
   };
 
   return (

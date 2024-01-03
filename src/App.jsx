@@ -26,7 +26,7 @@ import "./App.css";
 function App() {
   return (
     <div>
-      <h1></h1>
+      <DogsOrder />
       <ScreenSize />
       <div className="main">
         <details>
@@ -41,7 +41,6 @@ function App() {
               <ShowHide />
               <CopyToClipBoard />
               <Forms />
-              <DogsOrder />
               <MyElement />
               {/* <ReactKeys /> */}
               <Users />
