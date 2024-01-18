@@ -540,7 +540,57 @@ console.log(form.age.validator(form.age.value)); // false
 
 
 // # 31
+// Реализуйте функцию getUserFriends(userResponseJSON, userId), которая принимает на вход JSON-строку и userId пользователя. JSON содержит массив пользователей users и с массив друзей friends в виде пар [userId, userId]. Функция возвращает список друзей пользователя по переданному userId`.
+// Если пользователь с указанным id не найден, то функция должна вернуть пустой массив.
+
+type User = {
+  id: number,
+  name: string,
+  age: number,
+};
+
+type Friends = [number, number];
+
+type UserResponse = {
+  users: User[],
+  friends: Friends[]
+};
+
+function getUserFriends (userJson: string, userID: number): Array<User> | [] {
+  const usersObj:UserResponse = JSON.parse(userJson);
+  const user = usersObj.users.find(user => user.id === userID);
+
+  if (!user) return [];
   
+ const userFriendsID = usersObj.friends
+    .filter(friends => friends[0] === userID || friends[1] === userID)
+    .map(friends => friends[0] === userID ? friends[1] : friends[0]);
+
+  const friendsList = usersObj.users.filter(user => userFriendsID.includes(user.id));
+
+  return friendsList;
+
+}
+
+const userJson = JSON.stringify({
+    users: [
+      { id: 1, name: 'John', age: 20 },
+      { id: 2, name: 'Mary', age: 21 },
+      { id: 3, name: 'Peter', age: 22 },
+      { id: 4, name: 'Ann', age: 23 },
+    ],
+    friends: [
+      [1, 2],
+      [1, 3],
+      [3, 2],
+    ]
+});
+
+
+console.log(getUserFriends(userJson, 1)); // [{ id: 2, name: 'Mary', age: 21 }, { id: 3, name: 'Peter', age: 22 }]
+console.log(getUserFriends(userJson, 2)); // [{ id: 1, name: 'John', age: 20 }, { id: 3, name: 'Peter', age: 22 }]
+console.log(getUserFriends(userJson, 3)); // [{ id: 1, name: 'John', age: 20 }, { id: 2, name: 'Mary', age: 21 }]
+console.log(getUserFriends(userJson, 10)); // []
 
 // # 32
 
