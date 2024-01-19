@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-import React from "react";
 import { removeTodo, toggleTodo } from "../../store/storeTodo";
 
 export const TodoList = () => {

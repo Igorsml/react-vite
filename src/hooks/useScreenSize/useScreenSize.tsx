@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
 
+enum screenType {
+  large = "lg",
+  medium = "md",
+  small = "sm",
+}
+
 export const useScreenSize = () => {
   const [screenSize, setScreenSize] = useState("");
   const [width, setWidth] = useState(window.innerWidth);
@@ -12,13 +18,11 @@ export const useScreenSize = () => {
     let currentSize = "";
 
     if (newWidth >= mediumScreenWidth) {
-      currentSize = "Large";
+      currentSize = screenType.large;
     } else if (newWidth < mediumScreenWidth && newWidth >= smallScreenWidth) {
-      currentSize = "Medium";
+      currentSize = screenType.medium;
     } else if (newWidth <= smallScreenWidth) {
-      currentSize = "Small";
-    } else {
-      currentSize = "Extra Small";
+      currentSize = screenType.small;
     }
     setScreenSize(currentSize);
     setWidth(newWidth);
@@ -34,3 +38,5 @@ export const useScreenSize = () => {
 
   return [width, screenSize];
 };
+
+export { screenType as screenType };
