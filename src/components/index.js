@@ -19,9 +19,10 @@ import { RegForm } from "../components/RegForm/RegForm";
 import { ParentComponent } from "../components/Refs/ParentComponent";
 import { InputRef } from "../components/Refs/InputRef";
 import { ScreenSize } from "../components/ScreenSize/ScreenSize";
-import { UseDebUseId } from "../components/AKS/useDebUseId";
-import { ButtonsParent } from "../components/AKS/MemoAndCb/ButtonsParent";
-import { CbAndUseEffect } from "../components/AKS/CbAndUseEffect/CbAndUseEffect";
-import { MyComponent } from "../components/AKS/useDebugValue";
+import { UseDebUseId } from "../components/AKS/Part1/useDebUseId";
+import { ButtonsParent } from "../components/AKS/Part1/MemoAndCb/ButtonsParent";
+import { CbAndUseEffect } from "./AKS/Part1/CbAndUseEffect/CbAndUseEffect";
+import { MyComponent } from "./AKS/Part1/useDebugValue";
+import { Comments } from "./AKS/Part2/Comments/Comments";
 
-export { UseDebUseId, ButtonsParent, CbAndUseEffect, MyComponent, ScreenSize };
+export { ButtonsParent, CbAndUseEffect, MyComponent, ScreenSize, Comments };
