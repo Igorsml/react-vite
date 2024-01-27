@@ -24,5 +24,23 @@ import { ButtonsParent } from "../components/AKS/Part1/MemoAndCb/ButtonsParent";
 import { CbAndUseEffect } from "./AKS/Part1/CbAndUseEffect/CbAndUseEffect";
 import { MyComponent } from "./AKS/Part1/useDebugValue";
 import { Comments } from "./AKS/Part2/Comments/Comments";
+import { Basic } from "./AKS/Part2/useInsertionEffect/Basic";
+import { BasicUseIE } from "./AKS/Part2/useInsertionEffect/BasicUseIE";
+import { CallBackRefs } from "./AKS/Part2/useInsertionEffect/CallBackRefs";
+import { UseLayoutEffectTest } from "./AKS/Part2/useInsertionEffect/useLayoutEffect";
+import { UIHTestParent } from "./AKS/Part2/useImperativeHandle/UIHTestParent";
+import { UOTest } from "./AKS/Part2/UOTest/UOTest";
 
-export { ButtonsParent, CbAndUseEffect, MyComponent, ScreenSize, Comments };
+export {
+  ButtonsParent,
+  CbAndUseEffect,
+  MyComponent,
+  ScreenSize,
+  Comments,
+  Basic,
+  BasicUseIE,
+  UseLayoutEffectTest,
+  CallBackRefs,
+  UIHTestParent,
+  UOTest,
+};

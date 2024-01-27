@@ -1,6 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect, useId, useTransition } from "react";
-import { ScreenSize, Comments } from "./components";
+import {
+  ScreenSize,
+  Basic,
+  BasicUseIE,
+  UseLayoutEffectTest,
+  CallBackRefs,
+  UIHTestParent,
+  UOTest,
+} from "./components";
 
 import "./App.css";
 
@@ -48,14 +56,23 @@ function App() {
   return (
     <>
       <ol>
-        <li>useTransition</li>
-        <li>useDeferredValue</li>
+        <li>useTransition ✅</li>
+        <li>useDeferredValue ✅</li>
         <input onChange={handleSearch} />
         <h1>{isPending && "Rendering"}</h1>
-        <Comments entities={filterBySearch(comments, search)} />
+        <hr />
+        {/* <Comments entities={filterBySearch(comments, search)} /> */}
         <li>useImperativeHandle</li>
-        <li>useInsertionEffect</li>
+        <UIHTestParent />
+        <hr />
+        <li>useInsertionEffect ✅</li>
+        <Basic />
+        <BasicUseIE />
+        <UseLayoutEffectTest />
+        <CallBackRefs />
+        <hr />
         <li>useOptimistic</li>
+        <UOTest />
       </ol>
       <details>
         <summary>Details</summary>

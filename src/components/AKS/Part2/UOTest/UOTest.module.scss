@@ -1,0 +1,24 @@
+.desc {
+  padding: 20px;
+}
+
+.post {
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+.like {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.button {
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.ant-btn-ghost {
+  color: #fff;
+}
