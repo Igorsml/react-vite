@@ -1,22 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect, useId, useTransition } from "react";
-import {
-  ScreenSize,
-  Basic,
-  BasicUseIE,
-  UseLayoutEffectTest,
-  CallBackRefs,
-  UIHTestParent,
-  UOTest,
-} from "./components";
+import { ScreenSize } from "./components";
 
 import "./App.css";
 
-const filterBySearch = (entities, search) =>
-  entities.filter((item) => item.name.concat(item.body).includes(search));
+const filterBySearch = (entities, search) => entities.filter((item) => item.name.concat(item.body).includes(search));
 
 function App() {
-  const [isPending, startTransition] = useTransition();
+  const [count, setCount] = useState(0);
+  // const [isPending, startTransition] = useTransition();
   const [comments, setComments] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -25,6 +17,10 @@ function App() {
       .then((res) => res.json())
       .then(setComments);
   }, []);
+
+  useEffect(() => {
+    setCount;
+  }, [count]);
 
   const handleSearch = (e) => {
     // startTransition(() => {
@@ -55,60 +51,22 @@ function App() {
 
   return (
     <>
-      <ol>
-        <li>useTransition ✅</li>
-        <li>useDeferredValue ✅</li>
-        <input onChange={handleSearch} />
-        <h1>{isPending && "Rendering"}</h1>
+      <ScreenSize />
+
+      {/* <ol>
         <hr />
-        {/* <Comments entities={filterBySearch(comments, search)} /> */}
-        <li>useImperativeHandle</li>
-        <UIHTestParent />
-        <hr />
-        <li>useInsertionEffect ✅</li>
-        <Basic />
-        <BasicUseIE />
-        <UseLayoutEffectTest />
-        <CallBackRefs />
-        <hr />
-        <li>useOptimistic</li>
-        <UOTest />
       </ol>
       <details>
         <summary>Details</summary>
-        <ScreenSize />
-        <form
-          id={formId}
-          className="form"
-          name="contactForm"
-          onSubmit={onSubmit}
-        >
-          <input
-            onChange={handleChange}
-            type="text"
-            placeholder="Add name"
-            name="name"
-            value={formValues.name}
-          />
-          <input
-            onChange={handleChange}
-            type="text"
-            placeholder="Add surname"
-            name="surname"
-            value={formValues.surname}
-          />
-          <input
-            onChange={handleChange}
-            type="number"
-            placeholder="Add phone number"
-            name="phoneNumber"
-            value={formValues.phoneNumber}
-          />
-          <button type="submit" className="btn" form={formId}>
+        <form id={formId} className='form' name='contactForm' onSubmit={onSubmit}>
+          <input onChange={handleChange} type='text' placeholder='Add name' name='name' value={formValues.name} />
+          <input onChange={handleChange} type='text' placeholder='Add surname' name='surname' value={formValues.surname} />
+          <input onChange={handleChange} type='number' placeholder='Add phone number' name='phoneNumber' value={formValues.phoneNumber} />
+          <button type='submit' className='btn' form={formId}>
             Send
           </button>
         </form>
-      </details>
+      </details> */}
     </>
   );
 }

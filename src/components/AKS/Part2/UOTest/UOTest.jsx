@@ -19,15 +19,16 @@ export const UOTest = () => {
     if (error) {
       message.error({
         content: error,
-        duration: 5,
+        duration: 2,
       });
     }
   }, [error]);
+
   useEffect(() => {
     if (result) {
       message.success({
         content: "Api successfull!",
-        duration: 5,
+        duration: 2,
       });
     }
   }, [result]);
@@ -76,7 +77,7 @@ export const UOTest = () => {
             Random post that shows how Optimistic UI works. please be optimistic
             😊
           </div>
-          <div class="like">
+          <div className="like">
             <Button
               id="b1"
               type="primary"

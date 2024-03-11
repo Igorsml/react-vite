@@ -1,6 +1,5 @@
-import React, { useDeferredValue } from "react";
+import { useDeferredValue } from "react";
 
-// Define the Comment interface
 interface Comment {
   id: number;
   name: string;
@@ -16,7 +15,7 @@ export const Comments: React.FC<CommentsProps> = ({ entities }) => {
   return (
     <>
       <p>dolorum</p>
-      <ul>
+      <ul style={{ maxHeight: "200px", overflow: "scroll" }}>
         {values.map((comment) => (
           <li key={comment.id}>
             <h3>{comment.name}</h3>
