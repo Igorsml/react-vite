@@ -1,12 +1,11 @@
-const username = process.env.REACT_APP_API_KEY;
-const password = process.env.REACT_APP_API_KEY;
+const username = "d7c3a26e5cb8881dbac5dc86b266b736";
+const password = "d59e673149e95d248ac7c5d281e74dc5";
 
-const limit = "?per_page=3";
+const limit = "?per_page=5";
 const URL = `https://vsesoki.ru/admin/products.json${limit}`;
-
-const attributes = 'width="375" height="211" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="lazy"';
-let collectionsIDs = [];
-let newCollectionSEODescription = "";
+// const URL = `https://vsesoki.ru/admin/products.json`;
+const field3D = 33741;
+let newFieldValue = "";
 
 const headers = new Headers({
   method: "GET",
@@ -14,7 +13,11 @@ const headers = new Headers({
   "API-Usage-Limit": "1/500",
   "Content-Type": "application/json; charset=utf-8",
 });
-const regex = '/<iframe[^>]*src="https://www.youtube.com/embed/([A-Za-z0-9_-]+)"[^>]*></iframe>/';
+
+const regex = /<iframe\s+src="https:\/\/www\.youtube\.com\/embed\/([^"?]+)[^>]*><\/iframe>/g;
+const styleRegex = /style="[^"]*"/g;
+const attributeRegex = /(?:width|height|frameborder|allow|allowfullscreen|loading)="[^"]*"\s?/g;
+
 
 fetch(URL, { headers: headers })
   .then((response) => {
@@ -25,29 +28,27 @@ fetch(URL, { headers: headers })
     }
   })
   .then((products) => {
-    if (products.length > 0) {
-      for (const product of products) {
-        let URLbyID = "https://vsesoki.ru/admin/products.json";
-        if (product.seo_description !== null) {
-          newProductsEODescription = product.seo_description.replaceAll(attributes, "").replaceAll(regex, '<div id="$1" class="youtube"></div>');
-          URLbyID = `${URLbyID}/${product.id}.json`;
-
-          fetch(URLbyID, {
+    for (const product of products) {
+      for (const field of product.product_field_values) {
+        if (field.id !== field3D && field.value !== null && field.value.includes("iframe")) {
+          newFieldValue = field.value.replaceAll(regex, '<div id="$1" class="youtube"></div>');
+          fetch(`https://vsesoki.ru/admin/products/${product.id}/product_field_values/${field.id}.json`, {
             method: "PUT",
             headers: {
               Authorization: `Basic ${btoa(username + ":" + password)}`,
               "API-Usage-Limit": "1/500",
-              "Content-Type": "application/json; charset=utf-8",
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify({ product: { seo_description: newProductSEODescription } }),
+            body: JSON.stringify({
+              product_field_value: {
+                value: newFieldValue,
+              },
+            }),
           })
             .then((response) => response.json())
             .then((data) => console.log(data));
-          URLbyID = "";
-          newProductSEODescription = "";
-
-          URLbyID = "";
+          }
+          newFieldValue = "";
         }
       }
-    }
   });

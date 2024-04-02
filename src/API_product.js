@@ -1,6 +1,9 @@
 
+const username = "d7c3a26e5cb8881dbac5dc86b266b736";
+const password = "d59e673149e95d248ac7c5d281e74dc5";
+
 const field3D = 33741;
-const productID = 428465567;
+const productID = 17398726;
 
 // const URL = `https://vsesoki.ru/admin/products/110763324.json`;
 const URL = `https://vsesoki.ru/admin/products/428465567.json`;
@@ -32,6 +35,8 @@ fetch(URL, { headers: headers })
       if (productField.product_field_id !== field3D && productField.value !== null && productField.value.includes("iframe")) {
         newFieldValue = productField.value.replaceAll(regex, '<div id="$1" class="youtube"></div>');
         
+        // console.log("🚀 ~ .then ~ productID:", productID)
+        console.log("🚀 ~ .then ~ productField.id:", productField)
 
         fetch(`https://vsesoki.ru/admin/products/${productID}/product_field_values/${productField.id}.json`, {
           method: "PUT",
