@@ -3,14 +3,11 @@ const username = "d7c3a26e5cb8881dbac5dc86b266b736";
 const password = "d59e673149e95d248ac7c5d281e74dc5";
 
 const field3D = 33741;
-const productID = 17398726;
+const productID = 226463796;
 
-// const URL = `https://vsesoki.ru/admin/products/110763324.json`;
-const URL = `https://vsesoki.ru/admin/products/428465567.json`;
-// const URLbyID = `https://vsesoki.ru/admin/products/${productID}.json`;
-const URLbyID = `https://vsesoki.ru/admin/products/${productID}/product_field_values/handle.json`;
+// const URL = `https://vsesoki.ru/admin/products/428465567.json`;
+const URL = `https://vsesoki.ru/admin/products/${productID}.json`;
 
-const attributes = 'width="375" height="211" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="lazy"';
 let newFieldValue = "";
 
 const headers = new Headers({
@@ -19,7 +16,7 @@ const headers = new Headers({
   "API-Usage-Limit": "1/500",
   "Content-Type": "application/json; charset=utf-8",
 });
-const regex = /<iframe\s+src="https:\/\/www\.youtube\.com\/embed\/([^"?]+)[^>]*><\/iframe>/g;
+const regex = /<iframe\s[^>]*src="(?:https?:)?\/\/www\.youtube\.com\/embed\/([^"?]+)\??.*?<\/iframe>/g;
 // const regex = /<iframe(?:[^"']*["'][^"']*)*?\s+src="https:\/\/www\.youtube\.com\/embed\/([^"?]+)[^>]*><\/iframe>/g;
 
 fetch(URL, { headers: headers })
@@ -32,11 +29,11 @@ fetch(URL, { headers: headers })
   })
   .then((product) => {
     for (const productField of product.product_field_values) {
-      if (productField.product_field_id !== field3D && productField.value !== null && productField.value.includes("iframe")) {
+      if (productField.value !== null 
+        && productField.value.includes("iframe") 
+        && !productField.value.includes('evolveri') 
+        && !productField.value.includes('360.vsesoki.ru')) {
         newFieldValue = productField.value.replaceAll(regex, '<div id="$1" class="youtube"></div>');
-        
-        // console.log("🚀 ~ .then ~ productID:", productID)
-        console.log("🚀 ~ .then ~ productField.id:", productField)
 
         fetch(`https://vsesoki.ru/admin/products/${productID}/product_field_values/${productField.id}.json`, {
           method: "PUT",
